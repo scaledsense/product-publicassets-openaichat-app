@@ -793,7 +793,7 @@ const Chat = () => {
               <Stack className={styles.chatEmptyState}>
                 <img src={logo} className={styles.chatIcon} aria-hidden="true" />
                 <h1 className={styles.chatEmptyStateTitle}>{ui?.chat_title}</h1>
-                <h2 className={styles.chatEmptyStateSubtitle}>{ui?.chat_description}</h2>
+                <h2 className={styles.chatEmptyStateSubtitle} dangerouslySetInnerHTML={{__html: ui?.chat_description || ''}}/>
               </Stack>
             ) : (
               <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? '40px' : '0px' }} role="log">
@@ -924,6 +924,7 @@ const Chat = () => {
                   }
                   disabled={disabledButton()}
                   aria-label="clear chat button"
+                  title='Clear chat'
                 />
                 <Dialog
                   hidden={hideErrorDialog}
